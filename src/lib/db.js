@@ -1,4 +1,8 @@
 
+// endpoint
+// metodo +  ruta
+// GET http://ruta.com/api
+
 const mongoose = require('mongoose')
 
 module.exports = () => mongoose.connect(
