@@ -14,7 +14,7 @@ router.get('/', async (request, response) => {
         const allMentors = await mentors.getAll()
         response.json({
             success: true,
-            data: {
+            data   : {
                 mentors: allMentors
             }
         })
@@ -22,7 +22,7 @@ router.get('/', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            error: error.message
+            error  : error.message
         })
     }
 })
@@ -30,24 +30,24 @@ router.get('/', async (request, response) => {
 router.post('/', async (request, response) => {
     try {
         const newMentorData = request.body
-        const newMentor = await mentors.create(newMentorData)
+        const newMentor     = await mentors.create(newMentorData)
         response.json({
             success: true,
-            data: {
+            data   : {
                 newMentor
             }
         })
     } catch (error) {
         response.json({
             success: false,
-            error: error.message
+            error  : error.message
         })
     }
 })
 
 router.delete('/:id', async (request, response) => {
     try {
-        const id = request.params.id
+        const id     = request.params.id
         const nemtor = await mentors.deleteMentor(id)
         response.json({
             success: true,
@@ -56,24 +56,24 @@ router.delete('/:id', async (request, response) => {
     } catch (error) {
         response.json({
             success: false,
-            error: error.message
+            error  : error.message
         })
     }
 })
 
 router.patch('/:id', async (request, response) => {
     try {
-        const id = request.params.id
-        const data = request.body
+        const id     = request.params.id
+        const data   = request.body
         const nemtor = await mentors.updateMentor(id, data)
         response.json({
             success: true,
-            msg: "OK!!"
+            msg    : "OK!!"
         })
     } catch (error) {
         response.json({
             success: false,
-            error: error.message
+            error  : error.message
         })
     }
 })
