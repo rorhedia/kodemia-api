@@ -12,8 +12,24 @@ function getAll() {
     return Koders.find()
 }
 
-function create(koder) {
-    return Koders.create(koder)
+async function create(koder) {
+
+    const { email, password } = koder
+    const koderExist          = await Koders.findOne({ email })
+
+    if (koderExist) {
+        throw new Error('Usuario ya registrado')
+    }
+
+    // Encriptar la contraseña
+    const passdwEncripted = await bcrypt.hash(password)
+
+    return Koders.create({
+        ...koder,
+        password: passdwEncripted
+    })
+
+    // return Koders.create(koder)
 }
 
 function deleteKoder(id) {
@@ -26,7 +42,7 @@ function updateKoder(id, data) {
 
 async function signup(koderData) {
 
-    const {email}    = koderData
+    const { email }  = koderData
     const koderExist = await Koders.findOne({ email })
 
     if (koderExist) {

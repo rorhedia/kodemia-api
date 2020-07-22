@@ -6,6 +6,7 @@ const app          = express()
 const kodersRouter = require('./routes/koders.route')
 const mentorRouter = require('./routes/mentors.route')
 const authRouter   = require('./routes/auth.route')
+const classRouter  = require('./routes/classes.route')
 const cors         = require('cors')
 
 app.use(cors())
@@ -38,6 +39,11 @@ app.use('/mentors', mentorRouter)
  * Montando router de auth
  */
 app.use('/auth', authRouter)
+
+/**
+ * Montando router de classes
+ */
+app.use('/classes', classRouter)
 
 // app.get('/', (request, response) => {
 //     response.json({
