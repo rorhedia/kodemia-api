@@ -6,13 +6,16 @@ const app          = express()
 const kodersRouter = require('./routes/koders.route')
 const mentorRouter = require('./routes/mentors.route')
 const authRouter   = require('./routes/auth.route')
+const cors         = require('cors')
 
+app.use(cors())
 app.use(express.json())
 
 /**
  * moddleware a nivel de aplicación
  * app.use(function(request,response,next))
  */
+
 // app.use((request, response, next) => {
 //     console.log('Middleware de aplicación');
 //     next();
